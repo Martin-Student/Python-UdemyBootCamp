@@ -29,12 +29,10 @@ while endgame == False:
     wpis = input(f"Kto ma więcej? {ac['name']} czy {ba['name']} ")
 
     if wpis == 'a' and ac['follower_count'] > ba['follower_count']:
-        is_a = "grym"
         print(f"{ac['name']} ma więcej, ponieważ ma {ac['follower_count']}mln followersów, a {ba['name']} ma {ba['follower_count']}mln followersów")
 
     elif wpis == 'b' and ac['follower_count'] < ba['follower_count']:
         print(f"{ba['name']} ma więcej, ponieważ ma {ba['follower_count']}mln followersów, a {ac['name']} ma {ac['follower_count']}mln followersów")
-        is_b = True
     else:
         print("Błąd!")
         endgame = True
