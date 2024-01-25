@@ -1,39 +1,35 @@
 from game_data import data
 import random
 
-
-#a_key = 'name'
-#b_key = 'follower_count'
-#list_of_names = [a_dict[a_key] for a_dict in data]
-#list_of_followers = [a_dict[b_key] for a_dict in data]
-
 endgame = False
 
-def losownik_a():
-    ac = random.choice(data)
-    return ac
+def random_value_a():
+    figure = random.choice(data)
+    return figure
 
-def losownik_b():
-    ba = random.choice(data)
-    return ba
-
-
+def random_value_b():
+    figure = random.choice(data)
+    return figure
 
 
+figure_one = random_value_a()
+figure_second = random_value_b()
 
 while endgame == False:
 
-    ac = losownik_a()
-    ba = losownik_b()
 
-    wpis = input(f"Kto ma więcej? {ac['name']} czy {ba['name']} ")
 
-    if wpis == 'a' and ac['follower_count'] > ba['follower_count']:
-        print(f"{ac['name']} ma więcej, ponieważ ma {ac['follower_count']}mln followersów, a {ba['name']} ma {ba['follower_count']}mln followersów")
+    guess = input(f"Guess who has more followers? {figure_one['name']} OR {figure_second['name']}: ").lower()
 
-    elif wpis == 'b' and ac['follower_count'] < ba['follower_count']:
-        print(f"{ba['name']} ma więcej, ponieważ ma {ba['follower_count']}mln followersów, a {ac['name']} ma {ac['follower_count']}mln followersów")
+    if guess == 'a' and figure_one['follower_count'] > figure_second['follower_count']:
+        print(f"{figure_one['name']} has {figure_one['follower_count']}mln followers, when {figure_second['name']} has {figure_second['follower_count']}mln followers")
+        figure_second = random_value_b()
+
+    elif guess == 'b' and figure_one['follower_count'] < figure_second['follower_count']:
+        print(f"{figure_second['name']} has {figure_second['follower_count']}mln followers, when {figure_one['name']} has {figure_one['follower_count']}mln followers")
+        figure_one = random_value_a()
     else:
-        print("Błąd!")
+        print("You are wrong...")
+        print("Game Over!")
         endgame = True
 
